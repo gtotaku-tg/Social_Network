@@ -20,7 +20,13 @@ const ThoughtSchema = new Schema(
             required: 'Username is required!'
         },
         // subdocument for reactions
-        reactions: [reactionSchema]
+        // reactions: [reactionSchema] 
+        reactions: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Reaction'
+            }
+        ]
     },
     {
         toJSON: {
