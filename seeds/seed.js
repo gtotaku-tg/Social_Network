@@ -1,43 +1,33 @@
-import connection from '../config/connection';
-import {User, Thought} from '../models/index';
-import mongoose from 'mongoose';
-import getRandomName from './data';
+
+const connection = require('../config/connection');
+const User = require('../models/User');
+const Thought = require('../models/Thought');
+const userData = require('./userData.js');
+const thoughtData = require('./thoughtData.js');
+
 
 connection.on('error', (err) => err);
 
 connection.once('open', async () => {
     console.log('connected');
 
-    // Drop existing User
-  await User.deleteMany({});
-
-  // Drop existing Thought
-  await Thought.deleteMany({});
-  // Create empty array to hold the Users
-  const User = [];
-
-  for (let i = 0; i < 20; i++) {
+    connection.once('open', async () => {
+      console.log('Connected');
     
-    const username = getRandomName();
-    const email = `${first.toLowerCase()}.${last.toLowerCase()}@example.com`;
-
-    User.push({
-      username,
-      email,
+      try {
+        await User.deleteMany({});
+        await Thought.deleteMany({});
+    
+        await User.insertMany(userData);
+        await Thought.insertMany(thoughtData);
+  
+    
+        console.info('Database Seeded');
+      } catch (error) {
+        console.error(error);
+      }
+    
+      process.exit(0);
     });
   }
-  // Add students to the collection and await the results
-  await User.collection.insertMany(User);
-
-  // Add courses to the collection and await the results
-  await Thought.collection.insertOne({
-    thoughtText: 'Great!',
-    inPerson: false,
-    reactions: [...reactions],
-  });
-
-  // Log out the seed data to indicate what should appear in the database
-  console.table(reactions);
-  console.info('Seeding complete! 🌱');
-  process.exit(0);
-});
+);
