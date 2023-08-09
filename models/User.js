@@ -1,7 +1,7 @@
 // basic user model
 const { Schema, model, Types } = require ('mongoose');
 // import Thought from './Thought';
-// const thoughts = require('./Thought');
+const thoughts = require('./Thought');
 
 
 // Create the User Schema using the Mongoose Schema constructor
@@ -10,13 +10,13 @@ const UserSchema = new Schema(
         username: {
             type: String,
             unique: true,
-            required: 'Username is required!',
+            required: true,
             trim: true
         },
         email: {
             type: String,
             unique: true,
-            required: 'Email is required!',
+            required: true,
             match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please enter a valid email address']
         },
         thoughts: [

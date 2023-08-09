@@ -1,12 +1,13 @@
 // basic user model
 const { Schema, model } = require ('mongoose');
 const reactionSch = require('./Reaction');
+const moment = require('moment');
 
 const ThoughtSchema = new Schema(
     {
         thoughtText: {
             type: String,
-            required: 'Thought is required!',
+            required: true,
             minlength: 1,
             maxlength: 280
         },
@@ -14,7 +15,7 @@ const ThoughtSchema = new Schema(
             type: Date, 
             default: Date.now,
             // use a getter method to format the timestamp on query
-            get: (timestamp) => dateFormat(timestamp).format('MMM Do, YYYY [at] hh:mm a'),
+            get: (timestamp) => moment(timestamp).format('MMM Do, YYYY [at] hh:mm a'),
         },
         username: {
             type: String,

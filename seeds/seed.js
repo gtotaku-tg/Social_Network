@@ -11,9 +11,6 @@ connection.on('error', (err) => err);
 connection.once('open', async () => {
     console.log('connected');
 
-    connection.once('open', async () => {
-      console.log('Connected');
-    
       try {
         await User.deleteMany({});
         await Thought.deleteMany({});
@@ -22,12 +19,11 @@ connection.once('open', async () => {
         await Thought.insertMany(thoughtData);
   
     
-        console.info('Database Seeded');
+        console.info('Database Seeded.');
       } catch (error) {
         console.error(error);
       }
     
       process.exit(0);
-    });
-  }
-);
+    }
+  );
