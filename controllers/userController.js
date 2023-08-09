@@ -1,4 +1,5 @@
-const { User, Thought } = require('../models');
+// const { User, Thought } = require('../models').default;
+const User = require('../models/User');
     // get all users
     const getUsers = async (req, res) => {
         try {

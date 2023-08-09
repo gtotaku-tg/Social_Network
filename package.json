@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npx nodemon server.js",
+    "dev": "nodemon server",
     "seed": "node seeds/seed.js"
   },
   "keywords": [],
@@ -13,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
-    "mongoose": "^7.3.2"
+    "mongoose": "^7.3.2",
+    "nodemon": "^3.0.1"
   }
 }
