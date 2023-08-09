@@ -1,6 +1,8 @@
 // basic user model
-const { Schema, model } = require('mongoose');
-const Thought = require('./Thought');
+const { Schema, model, Types } = require ('mongoose');
+// import Thought from './Thought';
+const thoughts = require('./Thought');
+
 
 // Create the User Schema using the Mongoose Schema constructor
 const UserSchema = new Schema(
