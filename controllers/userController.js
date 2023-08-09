@@ -59,8 +59,8 @@ const userController = {
         try {
             const result = await User.findOneAndDelete({_id: req.params.id});
             res.status(200).json(result);
-            // // delete associated thoughts
-            // await Thought.deleteMany({_id: result.thoughts});
+            // delete associated thoughts
+            await Thought.deleteMany({_id: result.thoughts});
         } catch (err) {
             res.status(500).json(err);
         }
