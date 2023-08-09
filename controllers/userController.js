@@ -1,7 +1,10 @@
 // const { User, Thought } = require('../models').default;
 const User = require('../models/User');
+const Thought = require('../models/Thought');
+
+const userController = {
     // get all users
-    const getUsers = async (req, res) => {
+    async getUsers (req, res) {
         try {
             // get all users
             const User = await User.find()
@@ -11,31 +14,33 @@ const User = require('../models/User');
         } catch (err) {
             res.status(500).json(err);
         }
-    }
+    },
     // get single user by id
-    const getSingleUser= async (req, res) => {
+    async getSingleUser(req, res) {
         try{
             // find individual user with id
-            const User = await User.find({_id: req.paramas.id})
-            // populate thoughts and friends
-            .populate('Thought')
-            .populate('Friends');
+            const User = await User.findOne({_id: req.paramas.id})
+            if (!User) {
+                res.status(404).json({message: 'No User with this id!'});
+                return;
+            }else{
             res.status(200).json(User);
+            }
         } catch (err) {
             res.status(500).json(err);
         }
-    }
+    },
     // create a user
-    const createUser= async (req, res) => {
+    async createUser(req, res)  {
         try {
             const result = await User.create(req.body);
             res.status(200).json({message:'Success', User: result});
         } catch (err) {
             res.status(500).json(err);
         }
-    }
+    },
     // update a user
-    const updateUser = async (req, res) => {
+    async updateUser (req, res)  {
         try {
             const result = await User.findOneAndUpdate(
                 {_id: req.params.id},
@@ -48,21 +53,21 @@ const User = require('../models/User');
         } catch (err) {
             res.status(500).json(err);
         }
-    }
+    },
     // delete a user and associated thoughts
-    const deleteUser = async (req, res) => {
+    async deleteUser (req, res) {
         try {
             const result = await User.findOneAndDelete({_id: req.params.id});
             res.status(200).json(result);
-            // delete associated thoughts
-            await Thought.deleteMany({_id: result.thoughts});
+            // // delete associated thoughts
+            // await Thought.deleteMany({_id: result.thoughts});
         } catch (err) {
             res.status(500).json(err);
         }
-    }
+    },
 
     // add a friend
-    const addFriend = async (req, res) => {
+    async addFriend  (req, res) {
         try {
             const result = await User.findOneAndUpdate(
                 {_id: req.params.id},
@@ -75,10 +80,10 @@ const User = require('../models/User');
         } catch (err) {
             res.status(500).json(err);
         }
-    }
+    },
 
     // delete a friend 
-    const deleteFriend = async (req, res) => {
+    async deleteFriend  (req, res) {
         try {
             const result = await User.findOneAndUpdate(
                 {_id: req.params.id},
@@ -92,14 +97,7 @@ const User = require('../models/User');
             res.status(500).json(err);
         }
     }
-
-
-module.exports = {
-    getUsers,
-    getSingleUser,
-    createUser,
-    updateUser,
-    deleteUser,
-    addFriend,
-    deleteFriend
 }
+
+
+module.exports = userController;

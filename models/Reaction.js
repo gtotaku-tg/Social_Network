@@ -1,7 +1,7 @@
 const { Schema, Types } = require ('mongoose');
 
 // create the reaction schema
-const reactionSchema = new Schema(
+const reactionSch = new Schema(
     {
         // set custom id to avoid confusion with parent thought _id
         reactionId: {
@@ -32,4 +32,4 @@ const reactionSchema = new Schema(
 );
 
 //export the reaction schema
-module.exports =reactionSchema;
+module.exports =reactionSch;

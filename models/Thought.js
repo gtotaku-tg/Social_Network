@@ -1,5 +1,6 @@
 // basic user model
 const { Schema, model } = require ('mongoose');
+const reactionSch = require('./Reaction');
 
 const ThoughtSchema = new Schema(
     {
@@ -21,12 +22,7 @@ const ThoughtSchema = new Schema(
         },
         // subdocument for reactions
         // reactions: [reactionSchema] 
-        reactions: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Reaction'
-            }
-        ]
+        reactions: [reactionSch]
     },
     {
         toJSON: {
