@@ -32,5 +32,7 @@ This is the back end for for a social network web application where users can sh
 ## Walkthrough Video
 [Walkthrough video for Social-Network-API]( )
 
+[GitHub Repository](https://github.com/gtotaku-tg/Social_Network)
+
 ## Questions
 If you have any questions, you can find [my Github](https://github.com/gtotaku-tg) 
