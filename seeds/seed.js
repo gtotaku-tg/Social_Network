@@ -2,8 +2,8 @@
 const connection = require('../config/connection');
 const User = require('../models/User');
 const Thought = require('../models/Thought');
-const userData = require('./userData.js');
-const thoughtData = require('./thoughtData.js');
+const userData = require('./userData');
+const thoughtData = require('./thoughtData');
 
 
 connection.on('error', (err) => err);
@@ -26,4 +26,4 @@ connection.once('open', async () => {
     
       process.exit(0);
     }
-  );
+  ); 
