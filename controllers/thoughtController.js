@@ -3,7 +3,7 @@ const User = require('../models/User');
 const {Thought} = require('../models');
 
 // get all thoughts
-module.export = {
+module.exports = {
 
     // get all thoughts
     getThoughts(req, res) {
