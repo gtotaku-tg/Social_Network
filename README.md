@@ -30,7 +30,7 @@ This is the back end for for a social network web application where users can sh
 
 
 ## Walkthrough Video
-[Walkthrough video for Social-Network-API]( )
+[Walkthrough video for Social-Network-API](https://watch.screencastify.com/v/pMOEmAijkPhHJtZSpsKr)
 
 [GitHub Repository](https://github.com/gtotaku-tg/Social_Network)
 

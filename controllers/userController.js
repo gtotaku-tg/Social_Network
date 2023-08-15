@@ -45,8 +45,8 @@ module.exports = {
         .catch(err => res.json(err));
     },
     // update a user 
-    updateUser({params, body}, res) {   
-        User.findOneAndUpdate({_id: req.params.userId}, body, {new: true, runValidators: true})
+    updateUser(req, res) {   
+        User.findOneAndUpdate({_id: req.params.userId}, {$set: req.body}, {new: true, runValidators: true})
         .then((user) => {
             if (!user) {
                 res.status(404).json({message: 'Found nobody with this id!'});
